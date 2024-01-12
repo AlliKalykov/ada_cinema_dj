@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Кинотеатр{% endblock %}</title>
+    <!-- Общие стили и скрипты -->
+</head>
+<body>
+    <header>
+        <!-- Шапка сайта -->
+        <a href="/movie" class="header">Главная</a>
+        <a href="/movie/list" class="header">Фильмы</a>
+    </header>
+
+    <nav>
+        <!-- Навигация -->
+    </nav>
+
+    <main>
+        {% block content %}
+        <!-- Содержимое страницы -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Подвал сайта -->
+    </footer>
+</body>
+</html>

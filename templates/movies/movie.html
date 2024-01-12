@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{movie.name}}{% endblock %}
+
+{% block content %}
+    <h1>{{movie.name}}</h1>
+    <p>Жанр: 
+        {% for genre in movie.genres.all %}
+            <a href="/movie/genres/{{genre.id}}">{{genre.name}}</a>
+        {% endfor %}
+    </p>
+    <p>Год: {{movie.rental_start}}</p>
+    <p>Студия: {{movie.company}}</p>
+    <p>{{movie.description}}</p>
+    <img src="{{movie.image.url}}" alt="{{movie.name}}">
+{% endblock %}

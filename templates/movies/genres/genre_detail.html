@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{genre.name}}{% endblock %}
+
+{% block content %}
+    <h1>Фильмы по жанру <b>{{genre.name}}</b></h1>
+    <h4>{{genre.description}}</h4>
+    <ol>
+        {% for movie in genre.movie_set.all %}
+            <li>
+                <p><a href="/movie/detail/{{movie.id}}">{{movie.name}}</a></p>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}
