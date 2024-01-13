@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.views import generic
 
-from .models import Movie, Genre
+from .models import Movie, Genre, Seanse
+from .forms import MovieForm
 
 
 def index(request):
@@ -45,3 +47,21 @@ def genre_detail(request, genre_pk):
         'genre': genre,
     }
     return render(request, template_name, context)
+
+
+class SeanseGenericView(generic.ListView):
+    model = Seanse
+    template_name = 'movies/seanses/seanses_list.html'
+    context_object_name = 'seanses'
+
+
+class SeanseDetailView(generic.DetailView):
+    model = Seanse
+    template_name = 'movies/seanses/seanse_detail.html'
+    context_object_name = 'seanse'
+
+
+class MovieCreateView(generic.CreateView):
+    template_name = 'movies/movies_add.html'
+    form_class = MovieForm
+    success_url = '/movie/list'

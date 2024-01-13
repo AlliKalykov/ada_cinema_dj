@@ -32,7 +32,7 @@ class Movie(models.Model):
     duration = models.PositiveSmallIntegerField(verbose_name='Длительность фильма', help_text='Длительность в минутах')
     rental_start = models.DateField(verbose_name='Дата начала проката')
     rental_end = models.DateField(verbose_name='Дата окончания проката', blank=True, null=True)
-    poster = models.ImageField(upload_to='posters', verbose_name='Постер')
+    poster = models.ImageField(upload_to='posters', verbose_name='Постер', blank=True, null=True)
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, verbose_name='Компания', null=True, related_name='movies')
     genres = models.ManyToManyField(Genre, verbose_name='Жанры')
 

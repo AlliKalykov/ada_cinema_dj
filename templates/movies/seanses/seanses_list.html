@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <h4>Выберите сеанс</h4>
+    <table>
+        <tr>
+            <th>Фильм</th>
+            <th>Зал</th>
+            <th>Дата</th>
+            <th>Время</th>
+        </tr>
+        {% for seanse in seanses %}
+            <tr>
+                <td><a href="/movie/detail/{{ seanse.movie.id }}">{{ seanse.movie.name }}</a></td>
+                <td>{{ seanse.saloon }}</td>
+                <td>{{ seanse.date }}</td>
+                <td>{{ seanse.time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
