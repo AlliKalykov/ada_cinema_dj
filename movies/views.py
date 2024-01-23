@@ -65,3 +65,12 @@ class MovieCreateView(generic.CreateView):
     template_name = 'movies/movies_add.html'
     form_class = MovieForm
     success_url = '/movie/list'
+
+
+from rest_framework import viewsets
+
+from .serializers import MovieSerializer
+
+class MovieViewSet(viewsets.ModelViewSet):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
