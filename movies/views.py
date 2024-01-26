@@ -68,9 +68,15 @@ class MovieCreateView(generic.CreateView):
 
 
 from rest_framework import viewsets
+from rest_framework.decorators import action
 
-from .serializers import MovieSerializer
+from .serializers import MovieSerializer, MovieDetailSerializer
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
-    serializer_class = MovieSerializer
+    serializer_class = MovieDetailSerializer
+
+    def get_serializer_class(self):
+        if self.action in ['create', 'update', 'partial_update']:
+            return MovieSerializer
+        return MovieDetailSerializer
